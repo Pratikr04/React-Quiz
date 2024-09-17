@@ -1,6 +1,5 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
-
-
+import eachQuestions from "../components/questionData";
 
 const QuizContext = createContext();
 const initialValue = {
@@ -22,8 +21,6 @@ const initialValue = {
 const SEC_PER_QUESTION = 30;
 
 function reducer(state, action) {
-
-
   const question = state.questions.at(state.index);
   switch (action.type) {
     case "dataRceived":
@@ -92,16 +89,7 @@ function QuizProvider({ children }) {
   );
 
   useEffect(function () {
-    async function getQuestions() {
-      try {
-        const res = await fetch("http://localhost:8000/questions");
-        const data = await res.json();
-        dispatch({ type: "dataRceived", payload: data });
-      } catch (error) {
-        dispatch({ type: "dataFailed" });
-      }
-    }
-    getQuestions();
+    dispatch({ type: "dataRceived", payload: eachQuestions });
   }, []);
 
   return (
