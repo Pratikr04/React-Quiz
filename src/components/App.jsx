@@ -10,12 +10,11 @@ import FineshTest from "./FineshTest";
 import Footer from "./Footer";
 import Timer from "./Timer";
 import { useQuiz } from "../contexts/QuizContext";
-import questions from "./questionData";
+
 
 export default function App() {
   const { status, answer } = useQuiz();
-  // console.log(questions[0]);
-  // console.log(questions);
+ 
 
   return (
     <div className="app">
